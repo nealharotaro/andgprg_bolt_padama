@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
+    public AudioClip desSound;
+    public AudioClip scoreSound;
+    public AudioSource audioSource;
+
     public static int hp;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -28,6 +32,8 @@ public class BulletCollision : MonoBehaviour
 
                 //when target is destroyed, score is gained
                 Score.scoreValue += 1;
+                audioSource.PlayOneShot(desSound);
+                audioSource.PlayOneShot(scoreSound);
             }
         }
     }

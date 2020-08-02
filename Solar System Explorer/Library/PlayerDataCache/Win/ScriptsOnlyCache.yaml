@@ -47,6 +47,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -54,29 +58,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11160}
     - Class: 114
-      Script: {instanceID: 11318}
+      Script: {instanceID: 11192}
     - Class: 114
-      Script: {instanceID: 11518}
+      Script: {instanceID: 11320}
     - Class: 114
-      Script: {instanceID: 11748}
+      Script: {instanceID: 11328}
     - Class: 114
-      Script: {instanceID: 11918}
+      Script: {instanceID: 11522}
     - Class: 114
-      Script: {instanceID: 12616}
+      Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 12848}
+      Script: {instanceID: 11922}
     - Class: 114
-      Script: {instanceID: 12870}
+      Script: {instanceID: 11956}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 14230}
+      Script: {instanceID: 12624}
     - Class: 114
-      Script: {instanceID: 19962}
+      Script: {instanceID: 12856}
     - Class: 114
-      Script: {instanceID: 22178}
+      Script: {instanceID: 12878}
     - Class: 114
-      Script: {instanceID: 23676}
+      Script: {instanceID: 12978}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -108,6 +112,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
+  - hash:
+      serializedVersion: 2
+      Hash: 882ef25c2e5886393348cc1277c1aabb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BulletCollision
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -156,6 +166,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Score
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -296,7 +312,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 112caf487ce8b5e1f2320c0858b82298
+      Hash: 1cb57cd9aed85193f0ee686642a1c700
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BulletShooter
@@ -312,6 +328,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 687ea6bb0af6af08d78e9887da4b93fe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Timer
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -354,6 +376,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: b42e6e6d89505674b5377056753f9881
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnPoint
   - hash:
       serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
@@ -552,31 +580,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BulletCollision
-  - hash:
-      serializedVersion: 2
-      Hash: 1d3c68392641cbd70f9265527b3a8284
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SpawnPoint
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Score
-  - hash:
-      serializedVersion: 2
-      Hash: 687ea6bb0af6af08d78e9887da4b93fe
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Timer
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Asus/Documents/Android/Build_mod3/Solar System Explorer.exe
+  playerPath: C:/Users/Asus/Documents/Android/Buid_mod4/Solar System Explorer.exe

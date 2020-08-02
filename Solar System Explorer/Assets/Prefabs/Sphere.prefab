@@ -106,4 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00282506e6bfc3428da9768419a0902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  desSound: {fileID: 8300000, guid: 8524588a69a4f3e40bb597b6221138f1, type: 3}
+  scoreSound: {fileID: 8300000, guid: 9cc99277f231e4adbbd91ff1821f526b, type: 3}
+  audioSource: {fileID: 0}

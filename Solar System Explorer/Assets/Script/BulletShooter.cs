@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BulletShooter : MonoBehaviour
 {
+    //Audio types
+    public AudioClip bulletSound;
+    public AudioClip fastSound;
+    public AudioClip bombSound;
+    public AudioClip missileSound;
+    public AudioSource audioSource;
     // list for diff types of bullets
     public List<Transform> nozzles;
 
@@ -15,7 +22,7 @@ public class BulletShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,8 +36,9 @@ public class BulletShooter : MonoBehaviour
             for(int i = 0; i < nozzles.Count; i++) // to make the loop stop at the designated list count
             {
                 Instantiate(bulletPrefab, nozzles[i].transform.position, transform.rotation);
+                
             }
-
+            audioSource.PlayOneShot(bulletSound);
         }
         // if 2 is pressed, fast bullet is spawned
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -38,7 +46,9 @@ public class BulletShooter : MonoBehaviour
             for (int i = 0; i < nozzles.Count; i++)
             {
                 Instantiate(fastBulletPrefab, nozzles[i].transform.position, transform.rotation);
+                
             }
+            audioSource.PlayOneShot(fastSound);
         }
         // if 3 is pressed, bomb is spawned
         else if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -46,7 +56,9 @@ public class BulletShooter : MonoBehaviour
             for (int i = 0; i < nozzles.Count; i++)
             {
                 Instantiate(bombPrefab, nozzles[i].transform.position, transform.rotation);
+                
             }
+            audioSource.PlayOneShot(bombSound);
         }
         // if 4 is pressed, missile bullet is spawned
         else if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -54,7 +66,9 @@ public class BulletShooter : MonoBehaviour
             for (int i = 0; i < nozzles.Count; i++)
             {
                 Instantiate(missilePrefab, nozzles[i].transform.position, transform.rotation);
+
             }
+            audioSource.PlayOneShot(missileSound);
         }
     }
 }
