@@ -1,16 +1,26 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BulletCollision
     - BulletMovement
     - BulletShooter
     - Movement
     - Planets
+    - Score
+    - SpawnPoint
+    - Timer
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -42,14 +52,34 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11160}
+    - Class: 114
+      Script: {instanceID: 11318}
+    - Class: 114
       Script: {instanceID: 11518}
     - Class: 114
+      Script: {instanceID: 11748}
+    - Class: 114
       Script: {instanceID: 11918}
+    - Class: 114
+      Script: {instanceID: 12616}
     - Class: 114
       Script: {instanceID: 12848}
     - Class: 114
       Script: {instanceID: 12870}
+    - Class: 114
+      Script: {instanceID: 12970}
+    - Class: 114
+      Script: {instanceID: 14230}
+    - Class: 114
+      Script: {instanceID: 19962}
+    - Class: 114
+      Script: {instanceID: 22178}
+    - Class: 114
+      Script: {instanceID: 23676}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -58,6 +88,12 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -422,7 +458,7 @@ ScriptsOnlyBuild:
     className: TextMeshPro
   - hash:
       serializedVersion: 2
-      Hash: 131f425607820796717868b02ff18299
+      Hash: f330e8e314b68adb3a331d6880acc122
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Movement
@@ -516,7 +552,31 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BulletCollision
+  - hash:
+      serializedVersion: 2
+      Hash: 1d3c68392641cbd70f9265527b3a8284
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnPoint
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Score
+  - hash:
+      serializedVersion: 2
+      Hash: 687ea6bb0af6af08d78e9887da4b93fe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Timer
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Asus/Documents/Android/Solar System Explorer.exe
+  playerPath: C:/Users/Asus/Documents/Android/Build_mod3/Solar System Explorer.exe

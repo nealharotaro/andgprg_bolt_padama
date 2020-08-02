@@ -11,7 +11,7 @@ public class BulletMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.forward * speed;
+        rb.velocity = transform.forward * speed;
     }
 
     // Update is called once per frame

@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed;
+    [SerializeField]
+    private float rotationSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -16,28 +18,41 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Changed control navigations to: QE -> rotation, WASD -> Movement
         // going right
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(1, 0, 0) * Time.deltaTime * movementSpeed;
+            transform.position += transform.right * Time.deltaTime * movementSpeed;
         }
 
         // going left
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(1, 0, 0) * Time.deltaTime * movementSpeed;
+            transform.position -= transform.right * Time.deltaTime * movementSpeed;
         }
 
-        // going upwards
+        // going forward
         else if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, 1) * Time.deltaTime * movementSpeed;
+            transform.position += transform.forward * Time.deltaTime * movementSpeed;
         }
 
         // going backwards
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= new Vector3(0, 0, 1) * Time.deltaTime * movementSpeed;
+            transform.position -= transform.forward * Time.deltaTime * movementSpeed;
+        }
+        
+        //rotating towards left
+        else if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+        }
+
+        //rotating towards right
+        else if (Input.GetKey(KeyCode.E))
+        {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
     }
 }
