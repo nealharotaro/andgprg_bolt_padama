@@ -2,73 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class BulletShooter : MonoBehaviour
 {
     //Audio types
     public AudioClip bulletSound;
-    public AudioClip fastSound;
-    public AudioClip bombSound;
-    public AudioClip missileSound;
     public AudioSource audioSource;
-    // list for diff types of bullets
+
+    // list for diff nozzle areas
     public List<Transform> nozzles;
 
     public GameObject bulletPrefab;
-    public GameObject fastBulletPrefab;
-    public GameObject bombPrefab;
-    public GameObject missilePrefab; 
+
+    public int bulletCount;
+    Text bulletsAvailable;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        bulletsAvailable = GetComponent<Text>();
+    }
+
+    public void Fire()
+    {
+        // if Space is pressed, first bullet(basic) is spawned
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            for (int i = 0; i < nozzles.Count; i++) // to make the loop stop at the designated list count
+            {
+                Instantiate(bulletPrefab, nozzles[i].transform.position, transform.rotation);
+            }
+            // per fire reduce 1 bullet from the count
+            bulletCount--;
+            audioSource.PlayOneShot(bulletSound);
+            bulletsAvailable.text = "Bullets: " + bulletCount;
+        }
+    }
+
+    void Reload()
+    {
+        if (bulletCount >= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                bulletCount = 5;
+                bulletsAvailable.text = "Bullets: " + bulletCount;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Bullets are now in 1234 respectively, for UX purposes
-
-        // if 1 is pressed, first bullet(basic) is spawned
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // checks if bullet is 0, if its not, fire
+        if (bulletCount > 0)
         {
-            for(int i = 0; i < nozzles.Count; i++) // to make the loop stop at the designated list count
-            {
-                Instantiate(bulletPrefab, nozzles[i].transform.position, transform.rotation);
-                
-            }
-            audioSource.PlayOneShot(bulletSound);
+            Fire();
         }
-        // if 2 is pressed, fast bullet is spawned
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            for (int i = 0; i < nozzles.Count; i++)
-            {
-                Instantiate(fastBulletPrefab, nozzles[i].transform.position, transform.rotation);
-                
-            }
-            audioSource.PlayOneShot(fastSound);
-        }
-        // if 3 is pressed, bomb is spawned
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            for (int i = 0; i < nozzles.Count; i++)
-            {
-                Instantiate(bombPrefab, nozzles[i].transform.position, transform.rotation);
-                
-            }
-            audioSource.PlayOneShot(bombSound);
-        }
-        // if 4 is pressed, missile bullet is spawned
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            for (int i = 0; i < nozzles.Count; i++)
-            {
-                Instantiate(missilePrefab, nozzles[i].transform.position, transform.rotation);
-
-            }
-            audioSource.PlayOneShot(missileSound);
-        }
+        Reload();
     }
 }

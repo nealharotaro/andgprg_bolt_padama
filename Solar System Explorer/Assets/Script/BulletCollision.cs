@@ -8,7 +8,8 @@ public class BulletCollision : MonoBehaviour
     public AudioClip scoreSound;
     public AudioSource audioSource;
 
-    public static int hp;
+    public int hp; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +27,23 @@ public class BulletCollision : MonoBehaviour
             //checks hp
             if (hp <= 0)
             {
-                hp = 0;
-                //destroys the target if hp reaches 0
-                Destroy(this.gameObject);
+                if(CompareTag("Enemy"))
+                {
+                    hp = 0;
+                    //destroys the target if hp reaches 0
+                    Destroy(this.gameObject);
 
-                //when target is destroyed, score is gained
-                Score.scoreValue += 1;
-                audioSource.PlayOneShot(desSound);
-                audioSource.PlayOneShot(scoreSound);
+                    //when target is destroyed, score is gained
+                    Score.scoreValue += 1;
+                    audioSource.PlayOneShot(desSound);
+                    audioSource.PlayOneShot(scoreSound);
+                }
+                else if (CompareTag("Player"))
+                {
+                    hp = 0;
+                    //destroys the targer
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

@@ -4,36 +4,60 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public Transform spawnPoint;
-    public GameObject sphere;
+    public GameObject enemy;
 
-    public AudioClip enterSound;
-    public AudioClip exitSound; 
-    public AudioSource audioSource;
+    public float placeX;
+    public float placeY = 109;
+    public float placeZ = 233;
+    public float enemyCount;
 
-    // Start is called before the first frame update
+    public GameObject[] PooledObject;
+    public List<GameObject> enemyList;
+    public Transform[] SpawnLocations;
+    public float MinimumSpawnRate;
+    public float MaximumSpawnRate;
+    public int NumberOfObjects = 1;
+    private int index;
+    private int spawnLocationIndex;
+
+    // Use this for initialization
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        /*SetObjects();
+        StartCoroutine(SpawnEnemy());*/
+        StartCoroutine(SpawnEnemy());
     }
 
-    private void OnTriggerEnter(Collider collider)
+    /*void SetObjects()
     {
-        if (collider.gameObject.CompareTag("Player"))
+        index = 0;
+
+        for (int i = 0; i < PooledObject.Length * NumberOfObjects; i++)
         {
-            GameObject sphereBall = Instantiate(sphere, spawnPoint.transform.position, transform.rotation);
-            Destroy(sphereBall, 1);
-            audioSource.PlayOneShot(enterSound);
+            GameObject objects = Instantiate(PooledObject[index], new Vector3(placeX, placeY, placeZ), Quaternion.identity); // Spawn object prefabs
+            PooledObjectList.Add(objects); // Add prefabs to the Pool object list
+            PooledObjectList[i].SetActive(false); // Set prefabs as deactivated
+            index++;
+
+            // For the sake of multiplying the objects to the number of objects
+            if (index == PooledObject.Length)
+            {
+                index = 0; // Resets index
+            }
+        }
+    }*/
+
+    IEnumerator SpawnEnemy()
+    {
+        while(enemyCount < 10)
+        {
+            placeX = Random.Range(-45, 37);
+            Instantiate(enemy, new Vector3(placeX, placeY, placeZ), transform.rotation);
+            yield return new WaitForSeconds(1);
+            enemyCount += 1;
         }
     }
 
-    private void OnTriggerExit(Collider collider)
-    {
-        Destroy(collider.gameObject);
-        audioSource.PlayOneShot(exitSound);
-    }
-
-    // Update is called once per frame
     void Update()
     {
         

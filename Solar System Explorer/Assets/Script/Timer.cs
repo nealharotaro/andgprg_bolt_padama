@@ -8,10 +8,12 @@ public class Timer : MonoBehaviour
     public float currentTime;
     public float startTime;
     [SerializeField] Text timer;
+    public Text powerUp;
 
     // Start is called before the first frame update
     void Start()
     {
+        powerUp = GetComponent<Text>();
         currentTime = startTime;
     }
 
