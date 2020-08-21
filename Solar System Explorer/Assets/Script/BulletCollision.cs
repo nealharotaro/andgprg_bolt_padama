@@ -18,7 +18,7 @@ public class BulletCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet")) // comparing the tag, if bullet, proceed
         {
             hp -= 1;
             //destroy bullet after colliding the target
