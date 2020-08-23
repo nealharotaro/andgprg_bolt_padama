@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    public static int hp = 5;
     public List<Transform> nozzles;
 
     public GameObject bullet;
@@ -23,8 +21,8 @@ public class Enemy : MonoBehaviour
                     Instantiate(bullet, nozzles[i].transform.position, transform.rotation);
                 }
             }
-            delayBullet = 0;
         }
+        delayBullet = 0;
     }
 
     // Start is called before the first frame update

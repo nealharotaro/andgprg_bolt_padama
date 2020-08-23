@@ -366,7 +366,10 @@ MonoBehaviour:
   desSound: {fileID: 0}
   scoreSound: {fileID: 0}
   audioSource: {fileID: 0}
-  hp: 1
+  healthBar: {fileID: 0}
+  maxHp: 5
+  currentHp: 0
+  damage: 1
 --- !u!114 &544780105305273693
 MonoBehaviour:
   m_ObjectHideFlags: 0

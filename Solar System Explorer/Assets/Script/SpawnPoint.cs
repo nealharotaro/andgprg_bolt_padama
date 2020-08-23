@@ -17,7 +17,7 @@ public class SpawnPoint : MonoBehaviour
     public float MinimumSpawnRate;
     public float MaximumSpawnRate;
     public int NumberOfObjects = 1;
-    private int index;
+    public int index;
     private int spawnLocationIndex;
 
     // Use this for initialization
@@ -25,8 +25,11 @@ public class SpawnPoint : MonoBehaviour
     {
         /*SetObjects();
         StartCoroutine(SpawnEnemy());*/
+        index = Random.Range(0, 4);
         StartCoroutine(SpawnEnemy());
     }
+
+
 
     /*void SetObjects()
     {
@@ -52,14 +55,15 @@ public class SpawnPoint : MonoBehaviour
         while(enemyCount < 10)
         {
             placeX = Random.Range(-45, 37);
-            Instantiate(enemy, new Vector3(placeX, placeY, placeZ), transform.rotation);
+            Instantiate(enemyList[index], new Vector3(placeX, placeY, placeZ), transform.rotation);
             yield return new WaitForSeconds(1);
             enemyCount += 1;
         }
+        index = Random.Range(0, 4);
     }
 
     void Update()
     {
-        
+        StartCoroutine(SpawnEnemy());
     }
 }
