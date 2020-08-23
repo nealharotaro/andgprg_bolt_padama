@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
                     Instantiate(bullet, nozzles[i].transform.position, transform.rotation);
                 }
             }
+            delayBullet = 0;
         }
     }
 

@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class BulletCollision : MonoBehaviour
 {
     public AudioClip desSound;
     public AudioClip scoreSound;
     public AudioSource audioSource;
+    public Health healthBar;
 
-    public int hp; 
+    [SerializeField] public int maxHp;
+    public int currentHp; 
 
     // Start is called before the first frame update
     void Start()
     {
+        currentHp = maxHp;
+        healthBar.SetMaxHP(maxHp);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -20,17 +25,18 @@ public class BulletCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet")) // comparing the tag, if bullet, proceed
         {
-            hp -= 1;
+            currentHp--;
+            healthBar.SetHealth(currentHp);
             //destroy bullet after colliding the target
             Destroy(collision.gameObject);
 
-            //checks hp
-            if (hp <= 0)
+            //checks currentHp
+            if (currentHp <= 0)
             {
                 if(CompareTag("Enemy"))
                 {
-                    hp = 0;
-                    //destroys the target if hp reaches 0
+                    currentHp = 0;
+                    //destroys the target if currentHp reaches 0
                     Destroy(this.gameObject);
 
                     //when target is destroyed, score is gained
@@ -40,9 +46,10 @@ public class BulletCollision : MonoBehaviour
                 }
                 else if (CompareTag("Player"))
                 {
-                    hp = 0;
+                    currentHp = 0;
                     //destroys the targer
                     Destroy(this.gameObject);
+                    SceneManagement.LoadScene();
                 }
             }
         }
