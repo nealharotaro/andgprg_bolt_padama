@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
-    private float movementSpeed;
+    public static float movementSpeed = 50;
 
     private float width;
     private float right;
@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     
     void Move()  // changed navigations with only AD and -> <- keys
     {
-            // going right
+            // going right 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position += transform.right * Time.deltaTime * movementSpeed;

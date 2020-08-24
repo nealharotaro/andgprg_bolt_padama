@@ -9,31 +9,34 @@ public class Enemy : MonoBehaviour
     public GameObject bullet;
     public float delayBullet;
 
-    public void Fire()
+    private float elapsedTime;
+
+        // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    void Fire()
     {
         if (CompareTag("Enemy"))
         {
-            while (delayBullet != 3)
+            for (int i = 0; i < nozzles.Count; i++)
             {
-                delayBullet++;
-                for (int i = 0; i < nozzles.Count; i++)
-                {
-                    Instantiate(bullet, nozzles[i].transform.position, transform.rotation);
-                }
+                Instantiate(bullet, nozzles[i].transform.position, transform.rotation);
             }
         }
-        delayBullet = 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Fire();
+        elapsedTime += Time.deltaTime;
+            if(elapsedTime > 2)
+            {
+                Fire();
+                elapsedTime = 0;
+            }
+        
     }
 }

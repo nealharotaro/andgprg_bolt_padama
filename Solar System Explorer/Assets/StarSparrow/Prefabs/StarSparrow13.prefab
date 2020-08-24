@@ -268,7 +268,7 @@ MonoBehaviour:
   - {fileID: 8630167142769450652}
   - {fileID: 7654755239223738158}
   bullet: {fileID: 236573337876965669, guid: 404db3799765c5d49ad7cbcfadaa58bd, type: 3}
-  delayBullet: 0
+  delayBullet: 1
 --- !u!114 &2100318978169971314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,9 +285,11 @@ MonoBehaviour:
   scoreSound: {fileID: 0}
   audioSource: {fileID: 0}
   healthBar: {fileID: 0}
-  maxHp: 7
+  spawnPoint: {fileID: 0}
+  powerUps: []
+  maxHp: 2
   currentHp: 0
-  damage: 2
+  damage: 1
 --- !u!54 &7361108776704161913
 Rigidbody:
   m_ObjectHideFlags: 0

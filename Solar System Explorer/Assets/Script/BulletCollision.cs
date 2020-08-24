@@ -11,23 +11,31 @@ public class BulletCollision : MonoBehaviour
     public Health healthBar;
     public SpawnPoint spawnPoint;
 
+    public float placeX;
+    public float placeY = 109;
+    public float placeZ = 0;
+
     public List<GameObject> powerUps;
 
     [SerializeField] public int maxHp;
     public int currentHp; 
 
     public int damage;
+    private int time;
     private int powerRando;
-    private int rand;
+    private int multiplier;
 
     // Start is called before the first frame update
     void Start()
     {
-        rand = Random.Range(0, 1);
-        powerRando = Random.Range(0,4);
+        powerRando = Random.Range(0,2);
         currentHp = maxHp;
-        healthBar.SetMaxHP(maxHp);
+        if(CompareTag("Player"))
+        {
+            healthBar.SetMaxHP(maxHp);
+        }
         audioSource = GetComponent<AudioSource>();
+        StartCoroutine(SpawnPower());
     }
 
     void OnCollisionEnter(Collision collision)
@@ -35,7 +43,9 @@ public class BulletCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet")) // comparing the tag, if bullet, proceed
         {
             currentHp -= damage;
-            healthBar.SetHealth(currentHp);
+            if(CompareTag("Player")){
+                healthBar.SetHealth(currentHp);
+            }
             //destroy bullet after colliding the target
             Destroy(collision.gameObject);
 
@@ -45,12 +55,13 @@ public class BulletCollision : MonoBehaviour
                 if(CompareTag("Enemy"))
                 {
                     currentHp = 0;
+
                     //destroys the target if currentHp reaches 0
                     Destroy(this.gameObject);
 
                     //when target is destroyed, score is gained
                     
-                    AddScore();
+                    Score.scoreValue ++;
                     audioSource.PlayOneShot(desSound);
                     audioSource.PlayOneShot(scoreSound);
                 }
@@ -59,47 +70,58 @@ public class BulletCollision : MonoBehaviour
                     currentHp = 0;
                     //destroys the targer
                     Destroy(this.gameObject);
-                    //SceneManagement.LoadScene();
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
+            }
+        }
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            if(collision.gameObject.CompareTag("PowerUp"))
+            {
+            Destroy(collision.gameObject);
+
+               // double damage
+            if(powerRando == 0)
+            {
+                while(time >= 0)
+                {
+                    damage *= 2;
+                    time = 0;
+                }
+            }
+
+            // hp add
+            else if  (powerRando == 1)
+            {
+                multiplier = Random.Range(1, 3);
+                currentHp += multiplier;
+            }
+
+            //movement speed
+            else if (powerRando == 2)
+            {
+                while(time >= 0)
+                {
+                    Movement.movementSpeed *= 2;
+                    Movement.movementSpeed = 0;
+                }
+            }
             }
         }
     }   
 
-    void AddScore()
+    IEnumerator SpawnPower()
     {
-        if(spawnPoint.index == 0)
-        {
-            Score.scoreValue += 100;
-        }
-        else if(spawnPoint.index == 1)
-        {
-            Score.scoreValue += 50;
-        }
-        else if(spawnPoint.index == 2)
-        {
-            Score.scoreValue += 300;
-        }
-        else if(spawnPoint.index == 3)
-        {
-            Score.scoreValue += 200;
-        }
-        else if(spawnPoint.index == 4)
-        {
-            Score.scoreValue += 250;
-        }
+        placeX = Random.Range(-30, 25);
+        Instantiate(powerUps[powerRando], new Vector3(placeX, placeY, placeZ), transform.rotation);
+        yield return new WaitForSeconds(5);
     }
-
-    /*void SpawnPowerup()
-    {
-        if(rand == 1)
-        {
-            Instantiate(powerUps[powerRando], new Vector3(placeX, placeY, placeZ), transform.rotation);
-        }
-    }*/
 
     // Update is called once per frame
     void Update()
     {
-        
+        powerRando = Random.Range(0,2);
+        SpawnPower();
     }
 }

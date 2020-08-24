@@ -367,7 +367,9 @@ MonoBehaviour:
   scoreSound: {fileID: 0}
   audioSource: {fileID: 0}
   healthBar: {fileID: 0}
-  maxHp: 5
+  spawnPoint: {fileID: 0}
+  powerUps: []
+  maxHp: 2
   currentHp: 0
   damage: 1
 --- !u!114 &544780105305273693

@@ -12,11 +12,13 @@ public class BulletMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
+
+        Destroy(gameObject, 5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 5);
+        
     }
 }
